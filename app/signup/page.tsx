@@ -1,6 +1,6 @@
 "use client";
 
-import axios from "axios";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
@@ -15,10 +15,14 @@ export default function Signup() {
     role: "user",
   });
 
-  const handleSignup = async () => {
-    await axios.post("http://localhost:5000/users", form);
+  const handleSignup = () => {
+  if (form.email && form.password) {
+    alert("Signup Successful (Demo Mode)");
     router.push("/login");
-  };
+  } else {
+    alert("Please fill all fields");
+  }
+};
 
   return (
     <div className="h-screen flex justify-center items-center bg-gray-100">
